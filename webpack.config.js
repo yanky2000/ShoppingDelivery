@@ -12,19 +12,12 @@ module.exports = {
     devServer: {
         contentBase: 'dist'
     },
-    // module: {
-    //     loaders: [
-    //         // { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
-    //         { test: /\.js$/, exclude: /node_modules/, loader: "babel?presets[]=es2015" }
-    //     ]
-    // },
     module: {
         loaders: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: "babel?presets[]=es2015"
-                // loader: "babel-loader"
             }
         ]
     }
