@@ -25,21 +25,20 @@ angular.module('app', [router])
     .factory('productsData', productsData)
     .factory('storesData', storesData)
 
-    .config(($stateProvider, $urlRouterProvider, $locationProvider, $transitionsProvider) => {
+    .config(($stateProvider, $urlRouterProvider, $locationProvider) => {
 
-        // $urlRouterProvider.when("home", "/home/list");
-        // $urlRouterProvider.when("/home", "/home/list");
+        $urlRouterProvider.when("home", "/home/list");
+        $urlRouterProvider.when("/home", "/home/list");
 
-        // $urlRouterProvider.otherwise('/home/list');
-        $urlRouterProvider.otherwise('home');
+        $urlRouterProvider.otherwise('home/list');
 
-        $transitionsProvider.onBefore({
-            to: state => !!state.abstract
-        }, ($transition$, $state) => {
-            if (angular.isString($transition.to().abstract)) {
-                return $state.target($transition.to().abstract);
-            }
-        });
+        // $transitionsProvider.onBefore({
+        //     to: state => !!state.abstract
+        // }, ($transition$, $state) => {
+        //     if (angular.isString($transition.to().abstract)) {
+        //         return $state.target($transition.to().abstract);
+        //     }
+        // });
 
         $locationProvider.html5Mode({
             enabled: true,
@@ -48,24 +47,24 @@ angular.module('app', [router])
 
         $stateProvider
             .state('home', {
-                abstract: 'home.list',
+                abstract: true,
                 url: '/',
                 template: `<home></home>`
             })
 
-            .state('store', {
-                url: '/store/:storeName',
-                template: `<store></store>`
-            })
-
-            .state('home.list', {
-                // parent: 'home',
+            .state('list', {
+                parent: 'home',
                 url: '/list',
                 template: '<list></list>',
                 // controller: function ($scope, $stateParams) {
                 // $scope.product = $scope.products[$stateParams.id];
                 // }
 
+            })
+
+            .state('store', {
+                url: '/store/:storeName',
+                template: `<store></store>`
             })
 
             .state('productCard', {
