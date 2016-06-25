@@ -27,18 +27,10 @@ angular.module('app', [router])
 
     .config(($stateProvider, $urlRouterProvider, $locationProvider) => {
 
-        $urlRouterProvider.when("home", "/home/list");
-        $urlRouterProvider.when("/home", "/home/list");
 
-        $urlRouterProvider.otherwise('home/list');
-
-        // $transitionsProvider.onBefore({
-        //     to: state => !!state.abstract
-        // }, ($transition$, $state) => {
-        //     if (angular.isString($transition.to().abstract)) {
-        //         return $state.target($transition.to().abstract);
-        //     }
-        // });
+        $urlRouterProvider.otherwise('/home/list');
+        // $urlRouterProvider.when("home", "/home/list");
+        // $urlRouterProvider.when("/home", "/home/list");
 
         $locationProvider.html5Mode({
             enabled: true,
@@ -48,12 +40,11 @@ angular.module('app', [router])
         $stateProvider
             .state('home', {
                 abstract: true,
-                url: '/',
+                url: '/home',
                 template: `<home></home>`
             })
 
-            .state('list', {
-                parent: 'home',
+            .state('home.list', {
                 url: '/list',
                 template: '<list></list>',
                 // controller: function ($scope, $stateParams) {
