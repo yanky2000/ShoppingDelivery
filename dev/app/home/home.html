@@ -1,4 +1,20 @@
-<div ng-repeat='store in homeCtrl.stores'>
-    <!--<a ui-sref="store({storeName:store.name})">{{store.name}}</a>-->
-    <store store='store'></store>
-</div>  
+<form>
+    <label for="Search"></label>
+    <input type="text" placeholder="type your search here">
+</form>
+
+<section class="productsView">
+    <h2>{{currentStore.name}}</h2>
+
+    <!--tabs goes here-->
+    <ul ng-repeat="category in categories">
+        
+        <li class='category-tab'>{{category}}</li>
+    </ul>
+
+    <a ui-sref="list"> link</a>
+    <!--product cards container-->
+    
+    <ui-view></ui-view>
+    
+</section>

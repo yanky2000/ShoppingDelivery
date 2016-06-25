@@ -1,10 +1,10 @@
 'use strict';
 const _ = require('underscore');
 
-let productData = function () {
+let productsData = function () {
     console.log('goods loaded');
 
-    var goods = [
+    var products = [
         {
             name: "Огурцы",
             price: 125.90,
@@ -47,18 +47,14 @@ let productData = function () {
 
 
 
-    function filterGoods(params) {
-        // console.log(`goods is ` + goods);
-        // console.info(goods);
-        // console.info(_.where(goods, { category: "Овощи" }))
-        // console.log(` Овощи output is ` + output); 
-        return _.where(goods, params)
+    function filter(params) {
+        return _.where(products, params)
     }
 
     return {
-        goods: goods,
-        filterGoods: filterGoods
+        products: products,
+        filter: filter
     }
 }
 
-export default productData;
+export default productsData;

@@ -9,10 +9,10 @@ let category = {
     },
     template,
     controllerAs: 'categoryModel',
-    controller: function (productData) {
+    controller: function (productsData) {
         console.log('category has loaded');
         this.products =
-            productData.filterGoods({ category: this.category });
+            productsData.filter({ category: this.category });
             // productData.filterGoods({ category: "Овощи" });
     }
 }

@@ -8,10 +8,8 @@ let productCard = {
     },
     template,
     controllerAs: 'productCardVM',
-    controller: function (productData) {
-        this.product = productData.goods[0];
-        // this.products =
-        //     filterGoods.filter({ category: this.category });
+    controller: function (productsData) {
+        this.product = product || productsData.products[0];
     }
 };
 

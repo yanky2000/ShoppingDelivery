@@ -10,6 +10,7 @@ module.exports = {
     },
 
     devServer: {
+        // contentBase: 'test'
         contentBase: 'public'
     },
     module: {
@@ -23,6 +24,12 @@ module.exports = {
                 test: /\.html$/,
                 exclude: /node_modules/,
                 loader: "raw-loader"
+            },
+            {
+                test: /\.css$/,
+                exclude: /node_modules/,
+                loader: "style-loader!css-loader"
+
             }
         ]
     }, 
