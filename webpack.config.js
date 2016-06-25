@@ -2,15 +2,15 @@ var path = require('path');
 
 module.exports = {
     context: path.resolve('dev/app'),
-    entry: "./test/app",
+        entry: ["./index"],
     output: {
         path: path.resolve('build/app'),
-        publicPath: '/app',
+        publicPath: '/public/app',
         filename: "bundle.js"
     },
 
     devServer: {
-        contentBase: 'dist'
+        contentBase: 'public'
     },
     module: {
         loaders: [
@@ -18,8 +18,17 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: "babel?presets[]=es2015"
+            }, 
+            {
+                test: /\.html$/,
+                exclude: /node_modules/,
+                loader: "raw-loader"
             }
         ]
+    }, 
+
+    resolve: {
+        extensions: ['', '.js']
     }
 
 

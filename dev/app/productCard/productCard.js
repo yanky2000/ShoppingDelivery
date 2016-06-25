@@ -1,20 +1,18 @@
-(function () {
-    'use strict';
+'use strict';
 
-    angular
-        .module('myApp')
-        .component('productCard', {
-            bindings: {
-                product: "<",
-                category: '<'
-            },
-            templateUrl: 'app/productCard/productCard.html',
-            controllerAs: 'productCard',
-            controller: function (filterGoods) {
+import template from './productCard.html';
 
-                this.products =
-                    filterGoods.filter({ category: this.category });
-            }
-        })
+let productCard = {
+    bindings: {
+        product: "<",
+    },
+    template,
+    controllerAs: 'productCardVM',
+    controller: function (productData) {
+        this.product = productData.goods[0];
+        // this.products =
+        //     filterGoods.filter({ category: this.category });
+    }
+};
 
-})();
+export default productCard;

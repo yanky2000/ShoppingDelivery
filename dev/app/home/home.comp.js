@@ -1,19 +1,16 @@
-(function () {
-    'use strict';
-    angular
-        .module('myApp')
+'use strict';
+import template from './home.html';
 
-        .component('home', {
-            templateUrl: 'app/home/home.tmpl.html',
-            controllerAs: 'homeCtrl',
-            controller: function () {
-                console.log(`stores loaded`);
-                this.stores = [
-                    { name: 'Ашан' },
-                    { name: 'Метро' },
-                ];
-            }
-        })
+let home = {
+    template,
+    controllerAs: 'homeCtrl',
+    controller: function () {
+        console.log(`home loaded`);
+        this.stores = [
+            { name: 'Ашан' },
+            { name: 'Метро' },
+        ];
+    }
+};
 
-
-})();
+export default home;

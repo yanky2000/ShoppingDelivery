@@ -85,6 +85,4 @@ Products in each category should be in popularity descendant order
 
 
 
-
-
 */
