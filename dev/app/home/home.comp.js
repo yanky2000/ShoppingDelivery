@@ -1,9 +1,9 @@
 'use strict';
-import template from './home.html';
-let _ = require('underscore');
+import template from './home.jade';
+import _ from 'underscore';
 
 let home = {
-    template,
+    template: template(),
     controllerAs: 'homeCtrl',
     controller: function ($scope, productsData, storesData) {
         console.log(`home loaded`);
@@ -12,6 +12,8 @@ let home = {
         let defaultStore = $scope.stores[0];
         $scope.currentStore = this.selectedStore || defaultStore; 
         
+        
+
         // console.log($scope.stores);
         $scope.products = productsData.products;
         

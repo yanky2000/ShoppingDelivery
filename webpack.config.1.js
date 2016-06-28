@@ -1,38 +1,38 @@
-var path = require('path');
+let path = require('path');
 
 module.exports = {
-    // context: path.resolve(__dirname, 'dev/app'),
-    entry: './dev/app/index',
-
+    context: path.resolve('dev/app'),
+        entry: "./test",
     output: {
-        path: path.resolve(__dirname, 'build/js'),
-        publicPath: '/assets/js/',
-        filename: 'bundle.js'
+        path: __dirname + '/public/js',
+        // path:'public',
+        // publicPath: 'public/app',
+        filename: "bundle.js"
     },
 
     devServer: {
-        contentBase: 'build/',
+        contentBase: 'public',
     },
-
     module: {
         loaders: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: "babel?presets[]=es2015"
-            },
+            }, 
             {
                 test: /\.html$/,
                 exclude: /node_modules/,
                 loader: "raw-loader"
             },
             {
-                test: /\.jade$/,
+                test: /\.css$/,
                 exclude: /node_modules/,
-                loader: "jade"
-            },
+                loader: "style-loader!css-loader"
+
+            }
         ]
-    },
+    }, 
 
 
     resolve: {

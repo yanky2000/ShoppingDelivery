@@ -1,36 +1,47 @@
 'use strict';
 
-const angular = require('angular');
-const router = require('angular-ui-router');
-
+import angular from 'angular';
+import router from 'angular-ui-router';
 
 import home from './home/home.comp';
 import list from './list/list';
-import store from './store/store.comp';
-import category from './category/category.comp';
-import product from './product/product.comp';
-import productCard from './productCard/productCard';
-import productsData from './common/productsData';
-import storesData from './common/storesData';
+// import store from './store/store.comp';
+// import category from './category/category.comp';
+// import product from './product/product.comp';
+// import productCard from './productCard/productCard';
+// import productsData from './common/productsData';
+// import storesData from './common/storesData';
 
 
 angular.module('app', [router])
-
     .component('home', home)
     .component('list', list)
-    .component('store', store)
-    .component('category', category)
-    .component('product', product)
-    .component('productCard', productCard)
-    .factory('productsData', productsData)
-    .factory('storesData', storesData)
+    // .component('store', store)
+    // .component('category', category)
+    // .component('product', product)
+    // .component('productCard', productCard)
+    // .factory('productsData', productsData)
+    // .factory('storesData', storesData)
 
     .config(($stateProvider, $urlRouterProvider, $locationProvider) => {
+    // .config(($stateProvider, $urlRouterProvider, $locationProvider, $transitionsProvider) => {
 
+        // $transitionsProvider.onBefore({
+        //     to: state => !!state.abstract
+        // }, ($transition$, $state, $injector) => {
+        //     let abstractParam = $transition$.to().abstract;
 
-        $urlRouterProvider.otherwise('/home/list');
-        // $urlRouterProvider.when("home", "/home/list");
-        // $urlRouterProvider.when("/home", "/home/list");
+        //     if (angular.isFunction(abstractParam)) {
+        //         return $state.target($injector.invoke(abstractParam), $transition$.params())
+        //     } else if (angular.isString(abstractParam)) {
+        //         return $state.target(abstractParam, $transition$.params());
+        //     }
+        // });
+
+        $urlRouterProvider.otherwise('/home');
+
+        // $urlRouterProvider.when("home", "home/list");
+        // $urlRouterProvider.when("/home", "home/list");
 
         $locationProvider.html5Mode({
             enabled: true,
@@ -38,30 +49,24 @@ angular.module('app', [router])
         });
 
         $stateProvider
-            .state('home', {
-                abstract: true,
+            .state({
+                name: 'home',
                 url: '/home',
+                // abstract: 'home.list',
+                // abstract: true,
+                // template: `<p>test</p>2`
                 template: `<home></home>`
             })
-
-            .state('home.list', {
+     
+            .state('list', {
                 url: '/list',
-                template: '<list></list>',
+                template: '<list></list>'
+                // template: '<p>asdfas</p>asdfas'
                 // controller: function ($scope, $stateParams) {
                 // $scope.product = $scope.products[$stateParams.id];
                 // }
 
-            })
-
-            .state('store', {
-                url: '/store/:storeName',
-                template: `<store></store>`
-            })
-
-            .state('productCard', {
-                parent: 'home',
-                url: '/productCard',
-                template: '<product-card><product-card>'
+              
             })
 
     });

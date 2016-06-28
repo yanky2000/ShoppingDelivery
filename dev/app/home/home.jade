@@ -1,0 +1,13 @@
+form
+    label(for='Search')
+    input(type='text', placeholder='type your search here')
+    
+section.productsView
+    h2 {{currentStore.name}}
+    // tabs goes here
+    ul(ng-repeat='category in categories')
+    li.category-tab {{category}}
+    a(ui-sref='list') link221
+
+    // product cards container
+    ui-view
