@@ -2,7 +2,7 @@
 
 import angular from 'angular';
 import router from 'angular-ui-router';
-
+console.log(router);
 import home from './home/home.comp';
 import list from './list/list';
 // import store from './store/store.comp';
@@ -11,7 +11,6 @@ import list from './list/list';
 // import productCard from './productCard/productCard';
 // import productsData from './common/productsData';
 // import storesData from './common/storesData';
-
 
 angular.module('app', [router])
     .component('home', home)
@@ -43,25 +42,24 @@ angular.module('app', [router])
         // $urlRouterProvider.when("home", "home/list");
         // $urlRouterProvider.when("/home", "home/list");
 
-        $locationProvider.html5Mode({
-            enabled: true,
-            requireBase: false
-        });
-
+        // $locationProvider.html5Mode({
+        //     enabled: true,
+        //     requireBase: false
+        // });
         $stateProvider
             .state({
                 name: 'home',
                 url: '/home',
                 // abstract: 'home.list',
                 // abstract: true,
-                // template: `<p>test</p>2`
+                // template: `<p>home sky</p>`
                 template: `<home></home>`
             })
      
             .state('list', {
                 url: '/list',
                 template: '<list></list>'
-                // template: '<p>asdfas</p>asdfas'
+                // template: '<p>list template</p><a ui-sref="home">to home</a>'
                 // controller: function ($scope, $stateParams) {
                 // $scope.product = $scope.products[$stateParams.id];
                 // }

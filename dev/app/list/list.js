@@ -1,12 +1,14 @@
 'use strict';
 
 import template from './list.jade';
+// import template from './list.html';
 
 let productList = {
     bindings: {
         category: "<",
         store: "<",
     },
+    // template,
     template: template(),
     controllerAs: 'productListVM',
     controller: function ($scope, $stateParams) {
